@@ -42,6 +42,13 @@ git init  --bare
 ```
 
 #### git clone 
+```
+// 克隆仓库
+git clone <route adress>
+
+// 克隆指定分支的仓库
+git clone -b <branch name> <route adress>
+```
 
 #### git status  
 1 git status 命令用于显示工作目录和暂存区的状态。  
@@ -67,9 +74,51 @@ exp:
 ```
 
 #### git log
+```
+// 查看提交历史
+// 默认输出 commit hash, author, date, commit message
+/**
+exp:
+commit 8c0d740b0afcb1ff47b2693c33914ced9a42e966 (HEAD -> master, origin/master, origin/HEAD)
+Author: Mattle <coin1994@outlook.com>
+Date:   Tue Nov 12 22:58:36 2019 +0800
 
+    handler commit
+**/
+git log
+
+// 简化 git log 输出
+git log --oneline
+
+// --stat 是在 git log 的基础上输出文件增删改的统计数据
+git log --stat
+
+// 控制输出每个commit 具体的修改内容 以diff的形式给出
+git log -p
+
+// 限定git log 输出
+git log -n 
+exp:
+git log -2
+...
+```
 #### git add 
+```
+// 不加参数默认为将修改操作的文件和未跟踪新添加的文件添加到git系统的暂存区，注意不包括删除
+git add  . 
+//表示将所有的已跟踪的文件的修改与删除和新增的未跟踪的文件都添加到暂存区。
+git add --all / git add -A
 
+//表示将已跟踪文件中的修改和删除的文件添加到暂存区，不包括新增加的文件，注意这些被删除的文件被加入到暂存区再被提交并推送到服务器的版本库之后这个文件就会从git系统中消失了。
+git add --update / git add -u 
+...
+以上三个命令已经足够日常使用了
+...
+
+// 这个命令它也是作用于版本库中已被跟踪的文件中的执行过修改与删除操作的文件。
+git add -i
+
+```
 #### git commit 
 
 #### git push
